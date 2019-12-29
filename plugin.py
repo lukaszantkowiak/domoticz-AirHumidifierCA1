@@ -1,22 +1,23 @@
-# A Python plugin for Domoticz to access AirHumidifier CA1
+# A Python plugin for Domoticz to access AirPurifier 2
 #
-# Author: lukaszantkowiak
+# Author: kofec
 #
 # TODO: Update text sensors only when changed
 #
 #
-# v0.0.1 - initial version,
-# fetching data AirHumidifier CA1 print(MyHumidify.status())
-# <AirHumidiferStatus power=off, mode=OperationMode.High, temperature=18.4, humidity=66%,
-# led_brightness=LedBrightness.Off, buzzer=False, child_lock=False, target_humidity=55%, trans_level=None,
-# motor_speed=0, depth=68, dry=False, use_time=17924296, hardware_version=0001, button_pressed=None,
-# strong_mode_enabled=False, firmware_version_major=1.6.7, firmware_version_minor=0>
+# v0.1.0 - initial version,
+# fetching data AirPurifier 2 print(MyAir.status()) <AirPurifierStatus power=on,
+# aqi=10 temperature=22.9, humidity=35%, mode=OperationMode.Silent, led=True, led_brightness=LedBrightness.Bright,
+# buzzer=False, child_lock=False, brightness=None, favorite_level=10, filter_life_remaining=79,
+# filter_hours_used=717, use_time=2581642, motor_speed=352>
 
+# v0.1.1 - Add initial version of switches, update to nie version of python-miio
+#
 """
-<plugin key="AirHumidifierCA1" name="AirHumidifierCA1" author="lukaszantkowiak" version="0.0.1" wikilink="https://github.com/rytilahti/python-miio" externallink="https://github.com/lukaszantkowiak/domoticz-AirHumidifierCA1">
+<plugin key="AirPurifier" name="AirPurifier" author="kofec" version="0.1.1" wikilink="https://github.com/rytilahti/python-miio" externallink="https://github.com/kofec/domoticz-AirPurifier">
     <params>
 		<param field="Address" label="IP Address" width="200px" required="true" default="127.0.0.1"/>
-		<param field="Mode1" label="AirHumidifierCA1 Token" default="" width="400px" required="true"  />
+		<param field="Mode1" label="AirPurifier Token" default="" width="400px" required="true"  />
         <param field="Mode3" label="Check every x minutes" width="40px" default="15" required="true" />
 		<param field="Mode6" label="Debug" width="75px">
 			<options>
@@ -38,7 +39,6 @@ path=site.getsitepackages()
 for i in path:
     sys.path.append(i)
 
-import miio.airhumidifier
 import miio.airpurifier
 
 L10N = {
@@ -98,17 +98,7 @@ L10N = {
         "Connection to airly api failed: %s":
             "Połączenie z airly api nie powiodło się: %s",
         "Unrecognized error: %s":
-            "Nierozpoznany błąd: %s",
-        "Target Humidity":
-            "Docelowa wilgotność",
-        "Great humidity":
-            "Bardzo dobra wilgotność",
-        "Good humidity":
-            "Dobra wilgotność",
-        "Poor humidity":
-            "Przeciętna wilgotność",
-        "Bad humidity":
-            "Zła wilgotność",
+            "Nierozpoznany błąd: %s"
     },
     'en': { }
 }
@@ -140,22 +130,18 @@ class AirStatus:
     """Container for status reports from the air purifier."""
 
     def __init__(self, AddressIP, token):
+        Domoticz.Log("tutaj!")
         """
         Response of script:
                "<AirPurifierStatus power=on, aqi=10,average_aqi=8,temperature=21.9, humidity=36%," \
                "mode=OperationMode.Silent,led=True,led_brightness=LedBrightness.Bright,buzzer=False, " \
                "child_lock=False,favorite_level=10,filter_life_remaining=70, filter_hours_used=1044, " \
                "use_time=3748042, purify_volume=38007, motor_speed=354> "
-               <AirHumidiferStatus power=off, mode=OperationMode.High, temperature=18.4, humidity=66%, " \
-               "led_brightness=LedBrightness.Off, buzzer=False, child_lock=False, target_humidity=55%, " \
-               "trans_level=None, motor_speed=0, depth=68, dry=False, use_time=17924296, hardware_version=0001, " \
-               "button_pressed=None, strong_mode_enabled=False, firmware_version_major=1.6.7, firmware_version_minor=0>"
         """
 
         addressIP = str(AddressIP)
         token = str(token)
         try:
-            Domoticz.Log("tutaj!")
             data = subprocess.check_output(['bash', '-c', './MyHumidify.py ' + addressIP + ' ' + token], cwd=Parameters["HomeFolder"])
             data = str(data.decode('utf-8'))
             Domoticz.Log("data: " + data)
@@ -326,7 +312,7 @@ class BasePlugin:
             "onCommand called for Unit " + str(Unit) + ": Parameter '" + str(Command) + "', Level: " + str(Level))
 
         # Parameters["Address"] - IP address, Parameters["Mode1"] - token
-        commandToCall = './MyAir.py ' + Parameters["Address"] + ' ' + Parameters["Mode1"] + ' '
+        commandToCall = './MyHumidify.py ' + Parameters["Address"] + ' ' + Parameters["Mode1"] + ' '
         if Unit == self.UNIT_POWER_CONTROL:
             commandToCall += '--power=' + str(Command).upper()
         elif Unit == self.UNIT_MODE_CONTROL and int(Level) == 0:
