@@ -39,6 +39,7 @@ for i in path:
     sys.path.append(i)
 
 import miio.airhumidifier
+import miio.airpurifier
 
 L10N = {
     'pl': {
