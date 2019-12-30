@@ -29,13 +29,18 @@ args = parser.parse_args()
 if args.debug:
     print(args)
 
-file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile10.txt", "w")
-file.write(args.IPaddress + "\n")
-file.write(args.token + "\n")
-file.write(str(dir(miio)) + "\n")
-file.write(str(dir(miio.airhumidifier)) + "\n")
-file.write(str(dir(miio.purifier)) + "\n")
-file.close()
+try:
+    file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile10.txt", "w")
+    file.write(args.IPaddress + "\n")
+    file.write(args.token + "\n")
+    file.write(str(dir(miio)) + "\n")
+    file.write(str(dir(miio.airhumidifier)) + "\n")
+    file.write(str(dir(miio.purifier)) + "\n")
+    file.close()
+except Exception as e:
+    file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/error_file2.txt", "w")
+    file.write(str(e))
+    file.close()
 
 try:
     MyAir = miio.airhumidifier.AirHumidifierCA1(args.IPaddress, args.token)
