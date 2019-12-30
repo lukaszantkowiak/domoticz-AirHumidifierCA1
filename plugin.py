@@ -153,7 +153,7 @@ class AirStatus:
             # self.average_aqi = data["average_aqi"]
             self.power = data["power"]
             # self.humidity = int(data["humidity"][:-1])
-            self.temperature = str(format(float(data["temperature"]), '.1f'))
+            # self.temperature = str(format(float(data["temperature"]), '.1f'))
             self.mode = data["mode"]
             self.favorite_level = data["favorite_level"]
             self.motor_speed = data["motor_speed"]
@@ -484,10 +484,10 @@ class BasePlugin:
             # except KeyError:
             #     pass  # No humidity value
 
-            try:
-                self.variables[self.UNIT_TEMPERATURE]['sValue'] = res.temperature
-            except KeyError:
-                pass  # No temperature value
+            # try:
+            #     self.variables[self.UNIT_TEMPERATURE]['sValue'] = res.temperature
+            # except KeyError:
+            #     pass  # No temperature value
 
             try:
                 self.variables[self.UNIT_MOTOR_SPEED]['sValue'] = str(res.motor_speed)
