@@ -1,9 +1,5 @@
 #!/usr/bin/python3
 
-import Domoticz
-
-Domoticz.Log("test")
-
 file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile1.txt", "w")
 file.write("a")
 file.close()
