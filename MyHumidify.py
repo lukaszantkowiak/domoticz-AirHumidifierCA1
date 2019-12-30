@@ -18,22 +18,22 @@ parser.add_argument('--favoriteLevel', type=int, choices=range(0, 11), help='cho
 parser.add_argument('--power', choices=['ON', 'OFF'], help='power ON/OFF')
 parser.add_argument('--debug', action='store_true', help='if define more output is printed')
 
-# MyAir.set_mode(miio.airpurifier.OperationMode.Silent)
+# MyAir.set_mode(miio.airhumidifier.OperationMode.Silent)
 
 args = parser.parse_args()
 if args.debug:
     print(args)
-MyAir = miio.airpurifier.AirHumidifierCA1(args.IPaddress, args.token)
+MyAir = miio.airhumidifier.AirHumidifierCA1(args.IPaddress, args.token)
 
 if args.mode:
     if args.mode == "Auto":
-            MyAir.set_mode(miio.airpurifier.OperationMode.Auto)
+            MyAir.set_mode(miio.airhumidifier.OperationMode.Auto)
     elif args.mode == "Favorite":
-            MyAir.set_mode(miio.airpurifier.OperationMode.Favorite)
+            MyAir.set_mode(miio.airhumidifier.OperationMode.Favorite)
     elif args.mode == "Idle":
-            MyAir.set_mode(miio.airpurifier.OperationMode.Idle)
+            MyAir.set_mode(miio.airhumidifier.OperationMode.Idle)
     elif args.mode == "Silent":
-            MyAir.set_mode(miio.airpurifier.OperationMode.Silent)
+            MyAir.set_mode(miio.airhumidifier.OperationMode.Silent)
 
 if args.favoriteLevel:
     MyAir.set_favorite_level(args.favoriteLevel)
