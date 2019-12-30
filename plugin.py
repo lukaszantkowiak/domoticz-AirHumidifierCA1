@@ -156,7 +156,7 @@ class AirStatus:
             # self.temperature = str(format(float(data["temperature"]), '.1f'))
             self.mode = data["mode"]
             self.favorite_level = data["favorite_level"]
-            self.motor_speed = data["motor_speed"]
+            # self.motor_speed = data["motor_speed"]
             for item in data.keys():
                 Domoticz.Debug(str(item) + " => " + str(data[item]))
         except subprocess.CalledProcessError as e:
@@ -489,10 +489,10 @@ class BasePlugin:
             # except KeyError:
             #     pass  # No temperature value
 
-            try:
-                self.variables[self.UNIT_MOTOR_SPEED]['sValue'] = str(res.motor_speed)
-            except KeyError:
-                pass  # No motor_speed value
+            # try:
+            #     self.variables[self.UNIT_MOTOR_SPEED]['sValue'] = str(res.motor_speed)
+            # except KeyError:
+            #     pass  # No motor_speed value
 
             try:
                 if res.power == "on":
