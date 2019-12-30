@@ -47,6 +47,11 @@ try:
     file.write(args.token + "\n")
     file.write(str(dir(miio)) + "\n")
     file.write(str(dir(miio.airhumidifier)) + "\n")
+    file.write(str(dir(miio.__doc__)) + "\n")
+    file.write(str(dir(miio.__spec__)) + "\n")
+    file.write(str(dir(miio.__package__)) + "\n")
+    file.write(str(dir(miio.__path__)) + "\n")
+    file.write(str(dir(miio.__file__)) + "\n")
     file.close()
 except Exception as e:
     file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/error_file2.txt", "w")
