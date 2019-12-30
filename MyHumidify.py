@@ -51,12 +51,32 @@ parser.add_argument('--favoriteLevel', type=int, choices=range(0, 11), help='cho
 parser.add_argument('--power', choices=['ON', 'OFF'], help='power ON/OFF')
 parser.add_argument('--debug', action='store_true', help='if define more output is printed')
 
+
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile8.txt", "w")
+file.write("a")
+file.close()
+
 # MyAir.set_mode(miio.airhumidifier.OperationMode.Silent)
 
 args = parser.parse_args()
+
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile9.txt", "w")
+file.write("a")
+file.close()
+
 if args.debug:
     print(args)
+
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile10.txt", "w")
+file.write(args.IPaddress)
+file.write(args.token)
+file.close()
+
 MyAir = miio.airhumidifier.AirHumidifierCA1(args.IPaddress, args.token)
+
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile11.txt", "w")
+file.write("a")
+file.close()
 
 if args.mode:
     if args.mode == "Auto":
