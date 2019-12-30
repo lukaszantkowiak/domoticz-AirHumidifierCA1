@@ -126,7 +126,7 @@ class ConnectionErrorException(Exception):
 
 # temporery class
 
-class AirStatus:
+class AirStatus2:
     """Container for status reports from the air purifier."""
 
     def __init__(self, AddressIP, token):
@@ -152,7 +152,7 @@ class AirStatus:
             data = dict(item.split("=") for item in data.split(","))
             # self.aqi = data["aqi"]
             # self.average_aqi = data["average_aqi"]
-            self.power = data["power"]
+            # self.power = data["power"]
             # self.humidity = int(data["humidity"][:-1])
             # self.temperature = str(format(float(data["temperature"]), '.1f'))
             self.mode = data["mode"]
@@ -549,7 +549,7 @@ class BasePlugin:
 
     def sensor_measurement(self, addressIP, token):
         """current sensor measurements"""
-        return AirStatus(addressIP, token)
+        return AirStatus2(addressIP, token)
 #        addressIP = str(addressIP)
 #        token = str(token)
 #        MyAir = miio.airpurifier.AirPurifier(addressIP, token)
