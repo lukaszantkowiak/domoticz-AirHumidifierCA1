@@ -426,6 +426,8 @@ class BasePlugin:
 
             res = self.sensor_measurement(Parameters["Address"], Parameters["Mode1"])
 
+            Domoticz.Log("res: " + res)
+
             # try:
             #     self.variables[self.UNIT_AVARAGE_AQI]['sValue'] = str(res.average_aqi)
             # except KeyError:
@@ -503,22 +505,22 @@ class BasePlugin:
             # except KeyError:
             #     pass  # No power value
 
-            try:
-                if res.mode == "OperationMode.Idle":
-                    UpdateDevice(self.UNIT_MODE_CONTROL, 0, '0')
-                elif res.mode == "OperationMode.Silent":
-                    UpdateDevice(self.UNIT_MODE_CONTROL, 10, '10')
-                elif res.mode == "OperationMode.Favorite":
-                    UpdateDevice(self.UNIT_MODE_CONTROL, 20, '20')
-                elif res.mode == "OperationMode.Auto":
-                    UpdateDevice(self.UNIT_MODE_CONTROL, 30, '30')
-            except KeyError:
-                pass  # No mode value
+            # try:
+            #     if res.mode == "OperationMode.Idle":
+            #         UpdateDevice(self.UNIT_MODE_CONTROL, 0, '0')
+            #     elif res.mode == "OperationMode.Silent":
+            #         UpdateDevice(self.UNIT_MODE_CONTROL, 10, '10')
+            #     elif res.mode == "OperationMode.Favorite":
+            #         UpdateDevice(self.UNIT_MODE_CONTROL, 20, '20')
+            #     elif res.mode == "OperationMode.Auto":
+            #         UpdateDevice(self.UNIT_MODE_CONTROL, 30, '30')
+            # except KeyError:
+            #     pass  # No mode value
 
-            try:
-                UpdateDevice(self.UNIT_MOTOR_SPEED_FAVORITE, 1, str(int(res.favorite_level)*10))
-            except KeyError:
-                pass  # No motor_speed value
+            # try:
+            #     UpdateDevice(self.UNIT_MOTOR_SPEED_FAVORITE, 1, str(int(res.favorite_level)*10))
+            # except KeyError:
+            #     pass  # No motor_speed value
 
             self.doUpdate()
         except Exception as e:
