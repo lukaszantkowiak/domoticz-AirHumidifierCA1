@@ -9,6 +9,7 @@ for i in path:
     sys.path.append(i)
 
 import miio.airhumidifier
+import Domoticz
 
 parser = argparse.ArgumentParser(description='Script which comunicate with AirPurfier.')
 parser.add_argument('IPaddress', help='IP address of AirPurfier' )
@@ -46,5 +47,8 @@ if args.power:
         MyAir.on()
     elif args.power == "OFF":
         MyAir.off()
+
+Domoticz.Log("My Air")
+Domoticz.Log(MyAir.status())
 
 print(MyAir.status())
