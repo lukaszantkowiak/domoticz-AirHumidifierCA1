@@ -6,13 +6,12 @@
 #
 #
 # v0.1.0 - initial version,
-# fetching data AirPurifier 2 print(MyAir.status()) <AirPurifierStatus power=on,
-# aqi=10 temperature=22.9, humidity=35%, mode=OperationMode.Silent, led=True, led_brightness=LedBrightness.Bright,
-# buzzer=False, child_lock=False, brightness=None, favorite_level=10, filter_life_remaining=79,
-# filter_hours_used=717, use_time=2581642, motor_speed=352>
+# fetching data AirPurifier 2 print(MyAir.status())
+# <AirHumidiferStatus power=off, mode=OperationMode.High, temperature=19.2, humidity=62%,
+# led_brightness=LedBrightness.Off, buzzer=False, child_lock=False, target_humidity=55%, trans_level=None,
+# motor_speed=0, depth=67, dry=False, use_time=17924296, hardware_version=0001, button_pressed=None,
+# strong_mode_enabled=False, firmware_version_major=1.6.7, firmware_version_minor=0>
 
-# v0.1.1 - Add initial version of switches, update to nie version of python-miio
-#
 """
 <plugin key="AirHumidifierCA1" name="AirHumidifierCA1" author="lukaszantkowiak" version="0.1.1" wikilink="https://github.com/rytilahti/python-miio" externallink="https://github.com/kofec/domoticz-AirPurifier">
     <params>
