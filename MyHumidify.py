@@ -36,7 +36,9 @@ file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile6.txt",
 file.write("a")
 file.close()
 
+import miio
 import miio.airhumidifier
+import miio.purifier
 
 file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile7.txt", "w")
 file.write("a")
@@ -68,9 +70,14 @@ if args.debug:
     print(args)
 
 file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile10.txt", "w")
-file.write(args.IPaddress)
-file.write(args.token)
+file.write(args.IPaddress + "\n")
+file.write(args.token + "\n")
+file.write(str(dir(miio)) + "\n")
+file.write(str(dir(miio.airhumidifier)) + "\n")
+file.write(str(dir(miio.purifier)) + "\n")
 file.close()
+
+
 
 try:
     MyAir = miio.airhumidifier.AirHumidifierCA1(args.IPaddress, args.token)
