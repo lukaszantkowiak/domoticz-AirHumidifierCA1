@@ -570,6 +570,9 @@ class BasePlugin:
 #
 #        return response_object
 
+    def __str__(self):
+        return 'Wahaha! ' + str(vars(self))
+
 
 global _plugin
 _plugin = BasePlugin()
