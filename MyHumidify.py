@@ -8,7 +8,7 @@ path=site.getsitepackages()
 for i in path:
     sys.path.append(i)
 
-import miio.airpurifier
+import miio.airhumidifier
 
 parser = argparse.ArgumentParser(description='Script which comunicate with AirPurfier.')
 parser.add_argument('IPaddress', help='IP address of AirPurfier' )
@@ -23,7 +23,7 @@ parser.add_argument('--debug', action='store_true', help='if define more output 
 args = parser.parse_args()
 if args.debug:
     print(args)
-MyAir = miio.airpurifier.AirPurifier(args.IPaddress, args.token)
+MyAir = miio.airpurifier.AirHumidifierCA1(args.IPaddress, args.token)
 
 if args.mode:
     if args.mode == "Auto":
