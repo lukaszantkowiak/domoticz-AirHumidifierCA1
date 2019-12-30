@@ -149,7 +149,7 @@ class AirStatus:
             data = data[19:-2]
             data = data.replace(' ', '')
             data = dict(item.split("=") for item in data.split(","))
-            self.aqi = data["aqi"]
+            # self.aqi = data["aqi"]
             # self.average_aqi = data["average_aqi"]
             self.power = data["power"]
             self.humidity = int(data["humidity"][:-1])
