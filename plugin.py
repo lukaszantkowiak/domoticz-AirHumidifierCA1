@@ -38,7 +38,8 @@ path=site.getsitepackages()
 for i in path:
     sys.path.append(i)
 
-import miio.airpurifier
+# import miio.airpurifier
+import miio.airhumidifier
 
 L10N = {
     'pl': {
