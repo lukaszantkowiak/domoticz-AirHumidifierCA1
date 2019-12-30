@@ -26,12 +26,6 @@ file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile3.txt",
 file.write("A")
 file.close()
 
-import miio.purifier
-
-file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile4.txt", "w")
-file.write("A")
-file.close()
-
 parser = argparse.ArgumentParser(description='Script which comunicate with AirPurfier.')
 parser.add_argument('IPaddress', help='IP address of AirPurfier' )
 parser.add_argument('token', help='token to login to device')
@@ -53,7 +47,6 @@ try:
     file.write(args.token + "\n")
     file.write(str(dir(miio)) + "\n")
     file.write(str(dir(miio.airhumidifier)) + "\n")
-    file.write(str(dir(miio.purifier)) + "\n")
     file.close()
 except Exception as e:
     file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/error_file2.txt", "w")
