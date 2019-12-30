@@ -150,7 +150,7 @@ class AirStatus:
             data = data.replace(' ', '')
             data = dict(item.split("=") for item in data.split(","))
             self.aqi = data["aqi"]
-            self.average_aqi = data["average_aqi"]
+            # self.average_aqi = data["average_aqi"]
             self.power = data["power"]
             self.humidity = int(data["humidity"][:-1])
             self.temperature = str(format(float(data["temperature"]), '.1f'))
@@ -425,10 +425,10 @@ class BasePlugin:
 
             res = self.sensor_measurement(Parameters["Address"], Parameters["Mode1"])
 
-            try:
-                self.variables[self.UNIT_AVARAGE_AQI]['sValue'] = str(res.average_aqi)
-            except KeyError:
-                pass  # No airQualityIndex value
+            # try:
+            #     self.variables[self.UNIT_AVARAGE_AQI]['sValue'] = str(res.average_aqi)
+            # except KeyError:
+            #     pass  # No airQualityIndex value
 
             try:
                 self.variables[self.UNIT_AIR_QUALITY_INDEX]['sValue'] = str(res.aqi)
