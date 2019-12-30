@@ -11,6 +11,8 @@ for i in path:
 import miio.airhumidifier
 import Domoticz
 
+Domoticz.Log("My Air")
+
 parser = argparse.ArgumentParser(description='Script which comunicate with AirPurfier.')
 parser.add_argument('IPaddress', help='IP address of AirPurfier' )
 parser.add_argument('token', help='token to login to device')
@@ -21,10 +23,14 @@ parser.add_argument('--debug', action='store_true', help='if define more output 
 
 # MyAir.set_mode(miio.airhumidifier.OperationMode.Silent)
 
+Domoticz.Log("My Air2")
+
 args = parser.parse_args()
 if args.debug:
     print(args)
 MyAir = miio.airhumidifier.AirHumidifierCA1(args.IPaddress, args.token)
+
+Domoticz.Log("My Air3")
 
 if args.mode:
     if args.mode == "Auto":
@@ -36,11 +42,17 @@ if args.mode:
     elif args.mode == "Silent":
             MyAir.set_mode(miio.airhumidifier.OperationMode.Silent)
 
-if args.favoriteLevel:
-    MyAir.set_favorite_level(args.favoriteLevel)
+Domoticz.Log("My Air4")
 
 if args.favoriteLevel:
     MyAir.set_favorite_level(args.favoriteLevel)
+
+Domoticz.Log("My Air5")
+
+if args.favoriteLevel:
+    MyAir.set_favorite_level(args.favoriteLevel)
+
+Domoticz.Log("My Air6")
 
 if args.power:
     if args.power == "ON":
@@ -48,7 +60,7 @@ if args.power:
     elif args.power == "OFF":
         MyAir.off()
 
-Domoticz.Log("My Air")
+Domoticz.Log("My Air7")
 Domoticz.Log(MyAir.status())
 
 print(MyAir.status())
