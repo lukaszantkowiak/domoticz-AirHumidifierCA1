@@ -152,7 +152,7 @@ class AirStatus:
             # self.aqi = data["aqi"]
             # self.average_aqi = data["average_aqi"]
             self.power = data["power"]
-            self.humidity = int(data["humidity"][:-1])
+            # self.humidity = int(data["humidity"][:-1])
             self.temperature = str(format(float(data["temperature"]), '.1f'))
             self.mode = data["mode"]
             self.favorite_level = data["favorite_level"]
@@ -468,21 +468,21 @@ class BasePlugin:
             # except KeyError:
             #     pass  # No airQualityIndex value
 
-            try:
-                humidity = int(round(res.humidity))
-                if humidity < 40:
-                    humidity_status = 2  # dry humidity
-                elif 40 <= humidity <= 60:
-                    humidity_status = 0  # normal humidity
-                elif 40 < humidity <= 70:
-                    humidity_status = 1  # comfortable humidity
-                else:
-                    humidity_status = 3  # wet humidity
-
-                self.variables[self.UNIT_HUMIDITY]['nValue'] = humidity
-                self.variables[self.UNIT_HUMIDITY]['sValue'] = str(humidity_status)
-            except KeyError:
-                pass  # No humidity value
+            # try:
+            #     humidity = int(round(res.humidity))
+            #     if humidity < 40:
+            #         humidity_status = 2  # dry humidity
+            #     elif 40 <= humidity <= 60:
+            #         humidity_status = 0  # normal humidity
+            #     elif 40 < humidity <= 70:
+            #         humidity_status = 1  # comfortable humidity
+            #     else:
+            #         humidity_status = 3  # wet humidity
+            #
+            #     self.variables[self.UNIT_HUMIDITY]['nValue'] = humidity
+            #     self.variables[self.UNIT_HUMIDITY]['sValue'] = str(humidity_status)
+            # except KeyError:
+            #     pass  # No humidity value
 
             try:
                 self.variables[self.UNIT_TEMPERATURE]['sValue'] = res.temperature
