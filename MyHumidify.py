@@ -46,9 +46,7 @@ try:
     file.write(args.IPaddress + "\n")
     file.write(args.token + "\n")
     file.write(str(dir(miio)) + "\n")
-    file.write(str(dir(miio.__version__)) + "\n")
     file.write(str(dir(miio.airhumidifier)) + "\n")
-    file.write(str(dir(miio.airhumidifier.__version__)) + "\n")
     file.close()
 except Exception as e:
     file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/error_file2.txt", "w")
