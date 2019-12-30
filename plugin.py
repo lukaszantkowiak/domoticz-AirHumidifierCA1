@@ -142,9 +142,11 @@ class AirStatus2:
         addressIP = str(AddressIP)
         token = str(token)
         try:
+            Domoticz.Log("data will be retrieved")
             data = subprocess.check_output(['bash', '-c', './MyHumidify.py ' + addressIP + ' ' + token], cwd=Parameters["HomeFolder"])
+            Domoticz.Log("data1: " + data)
             data = str(data.decode('utf-8'))
-            Domoticz.Log("data: " + data)
+            Domoticz.Log("data2: " + data)
             if Parameters["Mode6"] == 'Debug':
                 Domoticz.Debug(data[:30] + " .... " + data[-30:])
             data = data[19:-2]
