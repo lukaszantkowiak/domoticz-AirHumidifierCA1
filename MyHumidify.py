@@ -10,9 +10,27 @@ path=site.getsitepackages()
 for i in path:
     sys.path.append(i)
 
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile1.txt", "w")
+file.write("A")
+file.close()
+
 import miio
+
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile2.txt", "w")
+file.write("A")
+file.close()
+
 import miio.airhumidifier
+
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile3.txt", "w")
+file.write("A")
+file.close()
+
 import miio.purifier
+
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile4.txt", "w")
+file.write("A")
+file.close()
 
 parser = argparse.ArgumentParser(description='Script which comunicate with AirPurfier.')
 parser.add_argument('IPaddress', help='IP address of AirPurfier' )
