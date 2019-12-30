@@ -72,7 +72,14 @@ file.write(args.IPaddress)
 file.write(args.token)
 file.close()
 
-MyAir = miio.airhumidifier.AirHumidifierCA1(args.IPaddress, args.token)
+try:
+    MyAir = miio.airhumidifier.AirHumidifierCA1(args.IPaddress, args.token)
+except Exception as e:
+    file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/error_file.txt", "w")
+    file.write(str(e))
+    file.close()
+
+
 
 file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile11.txt", "w")
 file.write("a")
