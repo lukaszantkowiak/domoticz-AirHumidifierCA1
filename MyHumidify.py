@@ -53,12 +53,12 @@ except Exception as e:
     file.write(str(e))
     file.close()
 
-try:
-    MyAir = miio.airhumidifier.AirHumidifier(args.IPaddress, args.token)
-except Exception as e:
-    file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/error_file.txt", "w")
-    file.write(str(e))
-    file.close()
+# try:
+MyAir = miio.airhumidifier.AirHumidifier(args.IPaddress, args.token)
+# except Exception as e:
+#     file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/error_file.txt", "w")
+#     file.write(str(e))
+#     file.close()
 
 
 
@@ -66,26 +66,37 @@ file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile11.txt"
 file.write("a")
 file.close()
 
-if args.mode:
-    if args.mode == "Auto":
+try:
+
+    if args.mode:
+        if args.mode == "Auto":
             MyAir.set_mode(miio.airhumidifier.OperationMode.Auto)
-    elif args.mode == "Favorite":
+        elif args.mode == "Favorite":
             MyAir.set_mode(miio.airhumidifier.OperationMode.Favorite)
-    elif args.mode == "Idle":
+        elif args.mode == "Idle":
             MyAir.set_mode(miio.airhumidifier.OperationMode.Idle)
-    elif args.mode == "Silent":
+        elif args.mode == "Silent":
             MyAir.set_mode(miio.airhumidifier.OperationMode.Silent)
 
-if args.favoriteLevel:
-    MyAir.set_favorite_level(args.favoriteLevel)
+    if args.favoriteLevel:
+        MyAir.set_favorite_level(args.favoriteLevel)
 
-if args.favoriteLevel:
-    MyAir.set_favorite_level(args.favoriteLevel)
+    if args.favoriteLevel:
+        MyAir.set_favorite_level(args.favoriteLevel)
 
-if args.power:
-    if args.power == "ON":
-        MyAir.on()
-    elif args.power == "OFF":
-        MyAir.off()
+    if args.power:
+        if args.power == "ON":
+            MyAir.on()
+        elif args.power == "OFF":
+            MyAir.off()
+except Exception as e:
+    file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/error_file3.txt", "w")
+    file.write(str(e))
+    file.close()
 
-print(MyAir.status())
+try:
+    print(MyAir.status())
+except Exception as e:
+    file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/error_file4.txt", "w")
+    file.write(str(e))
+    file.close()
