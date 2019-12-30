@@ -426,7 +426,7 @@ class BasePlugin:
 
             res = self.sensor_measurement(Parameters["Address"], Parameters["Mode1"])
 
-            Domoticz.Log("res: " + res)
+            Domoticz.Log("res: " + str(res))
 
             # try:
             #     self.variables[self.UNIT_AVARAGE_AQI]['sValue'] = str(res.average_aqi)
