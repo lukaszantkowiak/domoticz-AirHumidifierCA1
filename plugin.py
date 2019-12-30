@@ -552,6 +552,7 @@ class BasePlugin:
                     Devices[unit].Update(nValue=nV, sValue=sV)
 
     def sensor_measurement(self, addressIP, token):
+        Domoticz.Log("tutaj2!")
         """current sensor measurements"""
         return AirStatus2(addressIP, token)
 #        addressIP = str(addressIP)
