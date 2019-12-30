@@ -152,7 +152,7 @@ class AirStatus2:
             data = dict(item.split("=") for item in data.split(","))
             # self.aqi = data["aqi"]
             # self.average_aqi = data["average_aqi"]
-            # self.power = data["power"]
+            self.power = data["power"]
             # self.humidity = int(data["humidity"][:-1])
             # self.temperature = str(format(float(data["temperature"]), '.1f'))
             self.mode = data["mode"]
@@ -495,13 +495,13 @@ class BasePlugin:
             # except KeyError:
             #     pass  # No motor_speed value
 
-            try:
-                if res.power == "on":
-                    UpdateDevice(self.UNIT_POWER_CONTROL, 1, "AirPurifier ON")
-                elif res.power == "off":
-                    UpdateDevice(self.UNIT_POWER_CONTROL, 0, "AirPurifier OFF")
-            except KeyError:
-                pass  # No power value
+            # try:
+            #     if res.power == "on":
+            #         UpdateDevice(self.UNIT_POWER_CONTROL, 1, "AirPurifier ON")
+            #     elif res.power == "off":
+            #         UpdateDevice(self.UNIT_POWER_CONTROL, 0, "AirPurifier OFF")
+            # except KeyError:
+            #     pass  # No power value
 
             try:
                 if res.mode == "OperationMode.Idle":
