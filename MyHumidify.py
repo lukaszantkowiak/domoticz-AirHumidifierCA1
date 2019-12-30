@@ -10,7 +10,7 @@ for i in path:
 
 import miio.airhumidifier
 
-file = open("testfile1.txt", "w")
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile1.txt", "w")
 file.write("a")
 file.close()
 
@@ -24,7 +24,7 @@ parser.add_argument('--debug', action='store_true', help='if define more output 
 
 # MyAir.set_mode(miio.airhumidifier.OperationMode.Silent)
 
-file = open("testfile2.txt", "w")
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile2.txt", "w")
 file.write("a")
 file.close()
 
@@ -33,7 +33,7 @@ if args.debug:
     print(args)
 MyAir = miio.airhumidifier.AirHumidifierCA1(args.IPaddress, args.token)
 
-file = open("testfile3.txt", "w")
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile3.txt", "w")
 file.write("a")
 file.close()
 
@@ -47,21 +47,21 @@ if args.mode:
     elif args.mode == "Silent":
             MyAir.set_mode(miio.airhumidifier.OperationMode.Silent)
 
-file = open("testfile4.txt", "w")
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile4.txt", "w")
 file.write("a")
 file.close()
 
 if args.favoriteLevel:
     MyAir.set_favorite_level(args.favoriteLevel)
 
-file = open("testfile5.txt", "w")
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile5.txt", "w")
 file.write("a")
 file.close()
 
 if args.favoriteLevel:
     MyAir.set_favorite_level(args.favoriteLevel)
 
-file = open("testfile6.txt", "w")
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile6.txt", "w")
 file.write("a")
 file.close()
 
@@ -71,7 +71,7 @@ if args.power:
     elif args.power == "OFF":
         MyAir.off()
 
-file = open("testfile7.txt", "w")
+file = open("/home/pi/domoticz/plugins/domoticz-AirHumidifierCA1/testfile7.txt", "w")
 file.write(MyAir.status())
 file.close()
 
