@@ -430,43 +430,43 @@ class BasePlugin:
             # except KeyError:
             #     pass  # No airQualityIndex value
 
-            try:
-                self.variables[self.UNIT_AIR_QUALITY_INDEX]['sValue'] = str(res.aqi)
-
-                #       AQI	Air Pollution - base on https://en.wikipedia.org/wiki/Air_quality_index
-                #       Level	Health Implications
-                #       0–50	    Excellent
-                #       51–100	Good
-                #       101–150	Lightly Polluted
-                #       151–200	Moderately Polluted
-                #       201–300	Heavily Polluted
-                #       300+	Severely Polluted
-
-                if int(res.aqi) < 50:
-                    pollutionLevel = 1  # green
-                    pollutionText = _("Great air quality")
-                elif int(res.aqi) < 100:
-                    pollutionLevel = 1  # green
-                    pollutionText = _("Good air quality")
-                elif int(res.aqi) < 150:
-                    pollutionLevel = 2  # yellow
-                    pollutionText = _("Average air quality")
-                elif int(res.aqi) < 200:
-                    pollutionLevel = 3  # orange
-                    pollutionText = _("Poor air quality")
-                elif int(res.aqi) < 300:
-                    pollutionLevel = 4  # red
-                    pollutionText = _("Bad air quality")
-                elif int(res.aqi) >= 300:
-                    pollutionLevel = 4  # red
-                    pollutionText = _("Really bad air quality")
-                else:
-                    pollutionLevel = 0
-
-                self.variables[self.UNIT_AIR_POLLUTION_LEVEL]['nValue'] = pollutionLevel
-                self.variables[self.UNIT_AIR_POLLUTION_LEVEL]['sValue'] = pollutionText
-            except KeyError:
-                pass  # No airQualityIndex value
+            # try:
+            #     self.variables[self.UNIT_AIR_QUALITY_INDEX]['sValue'] = str(res.aqi)
+            #
+            #     #       AQI	Air Pollution - base on https://en.wikipedia.org/wiki/Air_quality_index
+            #     #       Level	Health Implications
+            #     #       0–50	    Excellent
+            #     #       51–100	Good
+            #     #       101–150	Lightly Polluted
+            #     #       151–200	Moderately Polluted
+            #     #       201–300	Heavily Polluted
+            #     #       300+	Severely Polluted
+            #
+            #     if int(res.aqi) < 50:
+            #         pollutionLevel = 1  # green
+            #         pollutionText = _("Great air quality")
+            #     elif int(res.aqi) < 100:
+            #         pollutionLevel = 1  # green
+            #         pollutionText = _("Good air quality")
+            #     elif int(res.aqi) < 150:
+            #         pollutionLevel = 2  # yellow
+            #         pollutionText = _("Average air quality")
+            #     elif int(res.aqi) < 200:
+            #         pollutionLevel = 3  # orange
+            #         pollutionText = _("Poor air quality")
+            #     elif int(res.aqi) < 300:
+            #         pollutionLevel = 4  # red
+            #         pollutionText = _("Bad air quality")
+            #     elif int(res.aqi) >= 300:
+            #         pollutionLevel = 4  # red
+            #         pollutionText = _("Really bad air quality")
+            #     else:
+            #         pollutionLevel = 0
+            #
+            #     self.variables[self.UNIT_AIR_POLLUTION_LEVEL]['nValue'] = pollutionLevel
+            #     self.variables[self.UNIT_AIR_POLLUTION_LEVEL]['sValue'] = pollutionText
+            # except KeyError:
+            #     pass  # No airQualityIndex value
 
             try:
                 humidity = int(round(res.humidity))
